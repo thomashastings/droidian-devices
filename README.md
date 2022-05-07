@@ -20,3 +20,4 @@ These devices are supported by members of the Droidian community. Device-specifi
 - Oneplus 6/6T (enchilada/fajita) [Guide]
 - Oneplus 3/3T (oneplus3) [Guide]
 - Xiaomi Mi 9T (davinci) [Guide]
+- Xiaomi Redmi Note 7 Pro (violet) [Guide]
