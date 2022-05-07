@@ -16,7 +16,7 @@ These devices receive support and adaptation packages from the Droidian core tea
 These devices are supported by members of the Droidian community. Device-specific fixes are provided by the maintainers in various forms (flashable zips or runnable scripts). Please, follow the guides corresponding to your device. You can ask for help at the [Droidian Telegram](https://t.me/droidianlinux) group.
 - Pocophone F1 (beryllium) [Guide](https://github.com/Unofficial-droidian-for-pocof1/droidian-beryllium-guide/tree/update)
 - Xiaomi Mi A2 (jasmine) [Guide](https://github.com/thomashastings/droidian-jasmine-guide)
-- Xiaomi 6X (wayne) [Guide]
+- Xiaomi 6X (wayne) [Guide](https://github.com/thomashastings/droidian-wayne-guide)
 - Oneplus 6/6T (enchilada/fajita) [Guide]
 - Oneplus 3/3T (oneplus3) [Guide]
 - Xiaomi Mi 9T (davinci) [Guide]
