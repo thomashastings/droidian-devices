@@ -21,3 +21,4 @@ These devices are supported by members of the Droidian community. Device-specifi
 - Oneplus 3/3T (oneplus3) [Guide]
 - Xiaomi Mi 9T (davinci) [Guide]
 - Xiaomi Redmi Note 7 Pro (violet) [Guide]
+- Asus Zenfone Max Pro M2 (X01BD) EXPERIMENTAL [Guide](https://github.com/thomashastings/droidian-x01bd-guide)
