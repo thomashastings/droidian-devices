@@ -1,0 +1,45 @@
+- manufacturer:
+  name:
+  codename:
+  fastboot_mode: '`Vol-` and `Power`'
+  recovery_mode: '`Vol+` and `Power`'
+  api_version:
+  arch:
+  droidian_release:
+  droidian_required_build: 
+      rootfs_link:
+      devtools_link:
+  android:
+      link:
+      text:
+      filename:
+  lineageos:
+      link:
+      text:
+      filename:
+  vendor:
+      link:
+      text:
+      filename:
+  boot:
+      link:
+      text:
+      filename:
+  recovery:
+      name:
+      link:
+      text: 
+      filename:
+  adaptation:
+      link:
+      text:
+      filename:
+  statuspage:
+  contact:
+      -  text:
+         link:  
+  credit:
+      -  name:
+         link:
+  command:
+  notes:
