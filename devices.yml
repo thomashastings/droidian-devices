@@ -1,0 +1,100 @@
+- manufacturer: Asus
+  name: Zenfone Max Pro M2
+  codename: X01BD
+  fastboot_mode: '`Vol+` and `Power`'
+  recovery_mode: '`Vol-` and `Power`'
+  api_version: API28
+  arch: arm64
+  droidian_release: https://github.com/droidian-images/rootfs-api28gsi-all/releases
+  droidian_required_build: 
+      rootfs_link: https://github.com/droidian-images/rootfs-api28gsi-all/releases/download/droidian%2Fbullseye%2F22/droidian-rootfs-api28gsi-arm64_20210531.zip
+      devtools_link: https://github.com/droidian-images/rootfs-api28gsi-all/releases/download/droidian%2Fbullseye%2F22/droidian-devtools-arm64_20210531.zip
+  android:
+      link: https://dlcdnets.asus.com/pub/ASUS/ZenFone/ZB631KL/UL-ASUS_X01BD-WW-16.2017.1912.072.999-user.zip
+      text: Android 9 (Pie) stock firmware
+      filename: UL-ASUS_X01BD-WW-16.2017.1912.072.999-user.zip
+  lineageos:
+      link: https://sourceforge.net/projects/kubersharma001/files/X01BD/lineage-16.0/lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download
+      text: LineageOS 16 (unofficial build)
+      filename: lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download
+  vendor:
+      link:
+      text:
+      filename:
+  boot:
+      link:
+      text:
+      filename:
+  recovery:
+      name: TWRP
+      link: https://dl.twrp.me/X01BD/
+      text: Latest TWRP recovery
+      filename: twrp-VERSION-X01BD.img
+  adaptation:
+      link: https://github.com/thomashastings/droidian-x01bd-guide/releases/download/v0.1/x01bd-adaptation_20220508.zip
+      text: Droidian adaptation zip (unofficial)
+      filename: x01bd-adaptation_20220508.zip
+  statuspage: https://github.com/thomashastings/droidian-x01bd-guide/blob/main/STATUS.md
+  contact:
+      -  text:
+         link:  
+  credit:
+      -  name: aboothahir
+         link: https://gitlab.com/iAboothahir
+      -  name: kubersharma
+         link: https://sourceforge.net/u/kubersharma/profile/
+      -  name: bauuuuu
+         link: https://forum.xda-developers.com/m/bauuuuu.6410262/
+  command:
+  notes:
+- manufacturer: Xiaomi
+  name: Pocophone F1
+  codename: beryllium
+  fastboot_mode: '`Vol-` and `Power`'
+  recovery_mode: '`Vol+` and `Power`'
+  api_version: API28
+  arch: arm64
+  droidian_release: https://github.com/droidian-images/rootfs-api28gsi-all/releases
+  droidian_required_build:
+      rootfs_link:
+      devtools_link:
+  android:
+      link: https://xiaomifirmwareupdater.com/download/?file=fw_beryllium_miui_POCOF1Global_9.6.27_6673f8a455_9.0.zip
+      text: Android 9 (Pie) stock firmware
+      filename: fw_beryllium_miui_POCOF1Global_9.6.27_6673f8a455_9.0.zip
+  lineageos:
+      link: https://sourceforge.net/projects/kubersharma001/files/X01BD/lineage-16.0/lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download
+      text: LineageOS 16 (unofficial build)
+      filename: lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download
+  vendor:
+      link: https://github.com/ubports-beryllium/artifacts/releases/download/v3/vendor.img
+      text: Vendor image
+      filename: vendor.img
+  boot:
+      link: https://github.com/Unofficial-droidian-for-pocof1/linux_android_xiaomi_beryllium/releases
+      text: Latest boot image
+      filename: boot.img
+  recovery:
+      name: TWRP
+      link: https://dl.twrp.me/beryllium/
+      text: Latest TWRP recovery
+      filename: twrp-VERSION-beryllium.img
+  adaptation:
+      link: https://github.com/Unofficial-droidian-for-pocof1/android-recovery-beryllium-adaptation/releases
+      text: Droidian adaptation zip (unofficial)
+      filename: android-recovery-beryllium-adaptation_YYYYMMDD.zip
+  statuspage:
+  contact:
+      -  text:
+         link:  
+  credit:
+      -  name: Joel Selvaraj
+         link: https://github.com/joelselvaraj
+      -  name: 1petro
+         link: https://github.com/1petro
+  command:
+  notes:
+      - title: SIM slot
+        text: Dual-SIM mode is not supported as of now. Only the SIM2 slot is active, so a microSD card can be used at the same time.
+      - title: Extras
+        text: For other tweaks, open the `King's Cross` terminal app, and run `beryllium-extras.sh`. This includes a notch fix and automated installation of Waydroid.
