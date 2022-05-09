@@ -23,7 +23,7 @@ for device in devices:
     else:
         outlines.append("- [Droidian `rootfs`]("+device['droidian_required_build']['rootfs_link']+") (specific build required)")
         outlines.append("- [Droidian `devtools`]("+device['droidian_required_build']['devtools_link']+") (specific build required)")
-    for downloadable in ["android", "lineageos", "vendor", "boot", "recovery", "adaptation"]:
+    for downloadable in ["android", "vendor_zip", "vendor_image", "boot", "recovery", "adaptation"]:
         if device[downloadable]["link"] is not None:
                 outlines.append("- ["+device[downloadable]['text']+"]("+device[downloadable]['link']+")")
     outlines.append("")
@@ -35,13 +35,13 @@ for device in devices:
     outlines.append("    - These are likely to include a URL (e. g., `internet.carrier.net`), a username, and possibly a password")
     outlines.append("- Unlock the bootloader (Computer)")
     outlines.append("    - Refer to the instructions provided by the device manufacturer")
-    outlines.append("    - Other useful sources include the [LineageOS wiki](https://wiki.lineageos.org/devices/) and [xda-developers](https://www.xda-developers.com/search2/)")
+    outlines.append("    - Other useful sources include the [vendor_zip wiki](https://wiki.vendor_zip.org/devices/) and [xda-developers](https://www.xda-developers.com/search2/)")
     outlines.append("- Boot into recovery (Computer)")
     outlines.append("    - Boot "+device['recovery']['name']+" by running `fastboot boot "+device['recovery']['filename']+"`")
     outlines.append("- Wipe the device ("+device['recovery']['name']+")")
     outlines.append("    - Go to the `Wipe` menu")
     outlines.append("    - Select `Advanced wipe`")
-    outlines.append("    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `Vendor`, `Data`")
+    outlines.append("    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `vendor_image`, `Data`")
     outlines.append("    - Swipe to Wipe")
     outlines.append("    - Go back to the previous menu")
     outlines.append("    - Choose `Format data` and type `yes`")
@@ -57,16 +57,16 @@ for device in devices:
         outlines.append("- Install the required base Android version (9, 10, 11)")
         outlines.append("    - Install the file called `"+device['android']['filename']+"` as a Zip file")
         outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['android']['filename']+"`")
-    if device['lineageos']['filename'] is not None:
-        outlines.append("- Install the required LineageOS version")
-        outlines.append("    - Install the file called `"+device['lineageos']['filename']+"`")
-        outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['lineageos']['filename']+"`")
-    if device['vendor']['filename'] is not None:
-        outlines.append("- Install the vendor image")
-        outlines.append("    - Install the file called `"+device['vendor']['filename']+"` as an Image to the `vendor` partition")
-        outlines.append("    - Alternatively, you can enter fastboot mode and `fastboot flash vendor "+device['vendor']['filename']+"`")
+    if device['vendor_zip']['filename'] is not None:
+        outlines.append("- Install the required vendor_zip version")
+        outlines.append("    - Install the file called `"+device['vendor_zip']['filename']+"`")
+        outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['vendor_zip']['filename']+"`")
+    if device['vendor_image']['filename'] is not None:
+        outlines.append("- Install the vendor_image image")
+        outlines.append("    - Install the file called `"+device['vendor_image']['filename']+"` as an Image to the `vendor_image` partition")
+        outlines.append("    - Alternatively, you can enter fastboot mode and `fastboot flash vendor_image "+device['vendor_image']['filename']+"`")
     if device['boot']['filename'] is not None:
-        outlines.append("- Install the vendor image")
+        outlines.append("- Install the vendor_image image")
         outlines.append("    - Install the file called `"+device['boot']['filename']+"` as an Image to the `boot` partition")
         outlines.append("    - Alternatively, you can enter fastboot mode and `fastboot flash boot "+device['boot']['filename']+"`")
     if device['recovery']['filename'] is not None:
