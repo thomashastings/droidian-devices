@@ -1,52 +1,3 @@
-- manufacturer: Asus
-  name: Zenfone Max Pro M2
-  codename: X01BD
-  fastboot_mode: '`Vol+` and `Power`'
-  recovery_mode: '`Vol-` and `Power`'
-  api_version: API28
-  arch: arm64
-  droidian_release: https://github.com/droidian-images/rootfs-api28gsi-all/releases
-  droidian_required_build: 
-      rootfs_link: https://github.com/droidian-images/rootfs-api28gsi-all/releases/download/droidian%2Fbullseye%2F22/droidian-rootfs-api28gsi-arm64_20210531.zip
-      devtools_link: https://github.com/droidian-images/rootfs-api28gsi-all/releases/download/droidian%2Fbullseye%2F22/droidian-devtools-arm64_20210531.zip
-  android:
-      link: https://dlcdnets.asus.com/pub/ASUS/ZenFone/ZB631KL/UL-ASUS_X01BD-WW-16.2017.1912.072.999-user.zip
-      text: Android 9 (Pie) stock firmware
-      filename: UL-ASUS_X01BD-WW-16.2017.1912.072.999-user.zip
-  lineageos:
-      link: https://sourceforge.net/projects/kubersharma001/files/X01BD/lineage-16.0/lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download
-      text: LineageOS 16 (unofficial build)
-      filename: lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download
-  vendor:
-      link:
-      text:
-      filename:
-  boot:
-      link:
-      text:
-      filename:
-  recovery:
-      name: TWRP
-      link: https://dl.twrp.me/X01BD/
-      text: Latest TWRP recovery
-      filename: twrp-VERSION-X01BD.img
-  adaptation:
-      link: https://github.com/thomashastings/droidian-x01bd-guide/releases/download/v0.1/x01bd-adaptation_20220508.zip
-      text: Droidian adaptation zip (unofficial)
-      filename: x01bd-adaptation_20220508.zip
-  statuspage: https://github.com/thomashastings/droidian-x01bd-guide/blob/main/STATUS.md
-  contact:
-      -  text:
-         link:  
-  credit:
-      -  name: aboothahir
-         link: https://gitlab.com/iAboothahir
-      -  name: kubersharma
-         link: https://sourceforge.net/u/kubersharma/profile/
-      -  name: bauuuuu
-         link: https://forum.xda-developers.com/m/bauuuuu.6410262/
-  command:
-  notes:
 - manufacturer: Xiaomi
   name: Pocophone F1
   codename: beryllium
@@ -62,11 +13,11 @@
       link: https://xiaomifirmwareupdater.com/download/?file=fw_beryllium_miui_POCOF1Global_9.6.27_6673f8a455_9.0.zip
       text: Android 9 (Pie) stock firmware
       filename: fw_beryllium_miui_POCOF1Global_9.6.27_6673f8a455_9.0.zip
-  lineageos:
-      link: https://sourceforge.net/projects/kubersharma001/files/X01BD/lineage-16.0/lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download
-      text: LineageOS 16 (unofficial build)
-      filename: lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download
-  vendor:
+  vendor_zip:
+      link:
+      text:
+      filename:
+  vendor_image:
       link: https://github.com/ubports-beryllium/artifacts/releases/download/v3/vendor.img
       text: Vendor image
       filename: vendor.img
@@ -98,3 +49,148 @@
         text: Dual-SIM mode is not supported as of now. Only the SIM2 slot is active, so a microSD card can be used at the same time.
       - title: Extras
         text: For other tweaks, open the `King's Cross` terminal app, and run `beryllium-extras.sh`. This includes a notch fix and automated installation of Waydroid.
+- manufacturer: Xiaomi
+  name: Mi 6X
+  codename: wayne
+  fastboot_mode: '`Vol-` and `Power`'
+  recovery_mode: '`Vol+` and `Power`'
+  api_version: API28
+  arch: arm64
+  droidian_release: https://github.com/droidian-images/rootfs-api28gsi-all/releases
+  droidian_required_build: 
+      rootfs_link:
+      devtools_link:
+  android:
+      link: https://github.com/ubports-xiaomi-sdm660/artifacts/releases/download/v0.1/jasmine_sprout_stock_android9.zip
+      text: Android 9 Pie Firmware
+      filename: jasmine_sprout_stock_android9.zip
+  vendor_zip:
+      link: https://github.com/TryHardDood/mi-vendor-updater/releases/download/wayne-stable/fw-vendor_wayne_miui_MI6X_V11.0.6.0.PDCCNXM_f049df201b_9.0.zip
+      text: Vendor (has arb4 firmware!)
+      filename: fw-vendor_wayne_miui_MI6X_V11.0.6.0.PDCCNXM_f049df201b_9.0.zip
+  vendor_image:
+      link:
+      text:
+      filename:
+  boot:
+      link:
+      text:
+      filename:
+  recovery:
+      name: TWRP
+      link: https://dl.twrp.me/wayne/
+      text: Latest TWRP image
+      filename: twrp-VERSION-wayne.img
+  adaptation:
+      link: https://github.com/Droidian-Mi-A2-6X/adaptation-xiaomi-wayne/releases
+      text: Latest adaptation zip
+      filename: droidian-adaptation-xiaomi-wayne-arm64_MMMMDDYY.zip 
+  statuspage: https://github.com/orgs/Droidian-Mi-A2-6X/projects/1
+  contact:
+      -  text:
+         link:  
+  credit:
+      -  name: kisekinopureya
+         link: https://github.com/kisekinopureya
+      -  name: Shouko
+         link: https://xn--n8ja0d4b0j7a.xn--q9jyb4c/
+  command:
+  notes:
+- manufacturer: Xiaomi
+  name: Redmo Note 7 Pro
+  codename: violet
+  fastboot_mode: '`Vol-` and `Power`'
+  recovery_mode: '`Vol+` and `Power`'
+  api_version: API28
+  arch: arch64
+  droidian_release: https://github.com/droidian-images/rootfs-api28gsi-all/releases
+  droidian_required_build: 
+      rootfs_link:
+      devtools_link:
+  android:
+      link: https://xiaomifirmwareupdater.com/firmware/violet/weekly/9.9.3/
+      text: Android 9 Pie Firmware
+      filename: fw_violet_miui_VIOLET_9.9.3_79d3ccd33b_9.0.zip
+  vendor_zip:
+      link: https://github.com/ubuntu-touch-violet/ubuntu-touch-violet/releases/tag/2021051
+      text: Android 9 vendor
+      filename: https://github.com/ubuntu-touch-violet/ubuntu-touch-violet/releases/tag/20210510
+  vendor_image:
+      link:
+      text:
+      filename:
+  boot:
+      link: https://gitlab.com/mathew-dennis/xiaomi-violet/-/jobs/2428049402/artifacts/file/out/boot.img
+      text: Halium-boot
+      filename: boot.img
+  recovery:
+      name: Orange Fox Recovery
+      link: https://orangefox.download/device/violet
+      text: Latest Orange Fox Recovery
+      filename: OrangeFox-violet-stable@VERSION.zip
+  adaptation:
+      link:
+      text:
+      filename:
+  statuspage:
+  contact:
+      -  text:
+         link:  
+  credit:
+      -  name: mathew-dennis
+         link: https://gitlab.com/mathew-dennis
+      -  name: mardy
+         link: https://forums.ubports.com/user/mardy
+  command:
+  notes:
+      - title: Adaptation
+        text: Follow [this guide](https://github.com/mathew-dennis/droidian-violet-guide/blob/main/README.md) for device adaptation.
+- manufacturer: Asus
+  name: Zenfone Max Pro M2 (EXPERIMENTAL)
+  codename: X01BD
+  fastboot_mode: '`Vol+` and `Power`'
+  recovery_mode: '`Vol-` and `Power`'
+  api_version: API28
+  arch: arm64
+  droidian_release: https://github.com/droidian-images/rootfs-api28gsi-all/releases
+  droidian_required_build: 
+      rootfs_link: https://github.com/droidian-images/rootfs-api28gsi-all/releases/download/droidian%2Fbullseye%2F22/droidian-rootfs-api28gsi-arm64_20210531.zip
+      devtools_link: https://github.com/droidian-images/rootfs-api28gsi-all/releases/download/droidian%2Fbullseye%2F22/droidian-devtools-arm64_20210531.zip
+  android:
+      link: https://dlcdnets.asus.com/pub/ASUS/ZenFone/ZB631KL/UL-ASUS_X01BD-WW-16.2017.1912.072.999-user.zip
+      text: Android 9 (Pie) stock firmware
+      filename: UL-ASUS_X01BD-WW-16.2017.1912.072.999-user.zip
+  vendor_zip:
+      link: https://sourceforge.net/projects/kubersharma001/files/X01BD/lineage-16.0/lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download
+      text: LineageOS 16 (unofficial build)
+      filename: lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download
+  vendor_image:
+      link:
+      text:
+      filename:
+  boot:
+      link:
+      text:
+      filename:
+  recovery:
+      name: TWRP
+      link: https://dl.twrp.me/X01BD/
+      text: Latest TWRP recovery
+      filename: twrp-VERSION-X01BD.img
+  adaptation:
+      link: https://github.com/thomashastings/droidian-x01bd-guide/releases/download/v0.1/x01bd-adaptation_20220508.zip
+      text: Droidian adaptation zip (unofficial)
+      filename: x01bd-adaptation_20220508.zip
+  statuspage: https://github.com/thomashastings/droidian-x01bd-guide/blob/main/STATUS.md
+  contact:
+      -  text:
+         link:  
+  credit:
+      -  name: aboothahir
+         link: https://gitlab.com/iAboothahir
+      -  name: kubersharma
+         link: https://sourceforge.net/u/kubersharma/profile/
+      -  name: bauuuuu
+         link: https://forum.xda-developers.com/m/bauuuuu.6410262/
+  command:
+  notes:
