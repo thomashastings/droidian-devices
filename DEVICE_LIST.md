@@ -2,7 +2,6 @@
 These devices receive support and adaptation packages from the Droidian core team.
 ### Android 9, API28
 [Instructions](https://github.com/droidian-images/rootfs-api28gsi-all), [Downloads](https://github.com/droidian-images/rootfs-api28gsi-all/releases)
-- The script depends on the `yaml` Python package, you need to install it before using running the script.
 - Google Pixel 3a (sargo)
 - F(x)tec Pro 1
 - Volla Phone (volla-yggdrasil)
