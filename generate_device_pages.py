@@ -14,9 +14,7 @@ outlines = []
 for device in devices:
     print('Generating', device['codename'],"...")
     outlines.append("# "+device['manufacturer']+' '+device['name'])
-    outlines.append("\n")
     outlines.append("**Make a backup now, as your device will be wiped.**")
-    outlines.append("\n")
     outlines.append("## 0. Download the needed files and tools")
     if device['droidian_required_build'] == None or device['droidian_required_build']['rootfs_link'] == None:
         outlines.append("- [Droidian `rootfs` and `devtools`]("+device['droidian_release']+") for `"+device['arch']+"` (nightly releases include devtools)")
@@ -29,13 +27,16 @@ for device in devices:
     outlines.append("")
     outlines.append("")
     outlines.append("## 1. Device preparation")
+    if device['manufacturer'] == "Xiaomi":
+        outlines.append("- A USB 2.0 port/hub with an actual USB 2.0 controller is recommended")
+        outlines.append("    - Using `fastboot` on a USB 3.0 port may cause errors with some Xiaomi devices")
     outlines.append("- Save your APN (Android)")
     outlines.append("    - The `Access Point Name` or `APN` can be found in the Settings menu of Android")
     outlines.append("    - Take a piece of paper or a text editor, and write down everything that you see on that screen")
     outlines.append("    - These are likely to include a URL (e. g., `internet.carrier.net`), a username, and possibly a password")
     outlines.append("- Unlock the bootloader (Computer)")
     outlines.append("    - Refer to the instructions provided by the device manufacturer")
-    outlines.append("    - Other useful sources include the [vendor_zip wiki](https://wiki.vendor_zip.org/devices/) and [xda-developers](https://www.xda-developers.com/search2/)")
+    outlines.append("    - Other useful sources include the [LineageOS wiki](https://wiki.lineageos.org/devices/) and [xda-developers](https://www.xda-developers.com/search2/)")
     outlines.append("- Boot into recovery (Computer)")
     outlines.append("    - Boot "+device['recovery']['name']+" by running `fastboot boot "+device['recovery']['filename']+"`")
     outlines.append("- Wipe the device ("+device['recovery']['name']+")")
@@ -53,26 +54,49 @@ for device in devices:
     outlines.append("    - Copy all of the files you downloaded to this folder")
     outlines.append("")
     outlines.append("## 2. Droidian installation ("+device['recovery']['name']+")")
-    if device['android']['filename'] is not None:
-        outlines.append("- Install the required base Android version (9, 10, 11)")
-        outlines.append("    - Install the file called `"+device['android']['filename']+"` as a Zip file")
-        outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['android']['filename']+"`")
-    if device['vendor_zip']['filename'] is not None:
-        outlines.append("- Install the required vendor_zip version")
-        outlines.append("    - Install the file called `"+device['vendor_zip']['filename']+"`")
-        outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['vendor_zip']['filename']+"`")
+    if device['ab_slot'] == True:
+        outlines.append("- Install base Android version and/or Vendor to both A/B slots")
+        outlines.append("  - Go to the `Reboot` menu and see which slot is active")
+        outlines.append("  - If it says `Slot A`, then select `Slot B` to be the active slot, and boot "+device['recovery']['name']+" again")
+        outlines.append("")
+        outlines.append("- **With `Slot B` as active:**")
+        if device['android']['filename'] is not None:
+            outlines.append("    - Install the file called `"+device['android']['filename']+"` as a Zip file")
+            outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['android']['filename']+"`")
+        if device['vendor_zip']['filename'] is not None:
+            outlines.append("    - Install the file called `"+device['vendor_zip']['filename']+"`")
+            outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['vendor_zip']['filename']+"`")
+        outlines.append("-    Now switch back to `Slot A` and boot "+device['recovery']['name']+" again (must boot again, switching is not enough)")
+        outlines.append("")
+        outlines.append("- **With `Slot A` as active:**")
+        if device['android']['filename'] is not None:
+            outlines.append("    - Install the file called `"+device['android']['filename']+"` as a Zip file")
+            outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['android']['filename']+"`")
+        if device['vendor_zip']['filename'] is not None:
+            outlines.append("    - Install the file called `"+device['vendor_zip']['filename']+"`")
+            outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['vendor_zip']['filename']+"`")
+        outlines.append("    - For the rest of the guide, keep using `Slot A`")
+    else:     
+        if device['android']['filename'] is not None:
+            outlines.append("- Install the required base Android version (9, 10, 11)")
+            outlines.append("    - Install the file called `"+device['android']['filename']+"` as a Zip file")
+            outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['android']['filename']+"`")
+        if device['vendor_zip']['filename'] is not None:
+            outlines.append("- Install the required vendor_zip version")
+            outlines.append("    - Install the file called `"+device['vendor_zip']['filename']+"`")
+            outlines.append("    - Alternatively, you can enter ADB mode and `sideload "+device['vendor_zip']['filename']+"`")
     if device['vendor_image']['filename'] is not None:
         outlines.append("- Install the vendor_image image")
-        outlines.append("    - Install the file called `"+device['vendor_image']['filename']+"` as an Image to the `vendor_image` partition")
+        outlines.append("    - Install the file called `"+device['vendor_image']['filename']+"` as an Image to the `Vendor` partition")
         outlines.append("    - Alternatively, you can enter fastboot mode and `fastboot flash vendor_image "+device['vendor_image']['filename']+"`")
     if device['boot']['filename'] is not None:
         outlines.append("- Install the vendor_image image")
-        outlines.append("    - Install the file called `"+device['boot']['filename']+"` as an Image to the `boot` partition")
+        outlines.append("    - Install the file called `"+device['boot']['filename']+"` as an Image to the `Boot` partition")
         outlines.append("    - Alternatively, you can enter fastboot mode and `fastboot flash boot "+device['boot']['filename']+"`")
     if device['recovery']['filename'] is not None:
         outlines.append("- Install Recovery")
         if device['recovery']['name'] == "TWRP":
-            outlines.append("    - Install the file called `"+device['recovery']['filename']+"` as an Image to the `recovery` partition")
+            outlines.append("    - Install the file called `"+device['recovery']['filename']+"` as an Image to the `Recovery` partition")
         else:
             outlines.append("    - Please, follow the official guide to install "+device['recovery']['name'])
     outlines.append("- Install Droidian `rootfs`")
