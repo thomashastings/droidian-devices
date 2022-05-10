@@ -1,9 +1,6 @@
 ## Official devices
-- This is tool generates guides (GitHub markdown format) for devices supported by Droidian, based on a YAML configuration file.
 These devices receive support and adaptation packages from the Droidian core team.
-- The latest version of the devices file is the `devices.yml`.
 ### Android 9, API28
-- An empty device template is also provided as `device_template.yml`.
 [Instructions](https://github.com/droidian-images/rootfs-api28gsi-all), [Downloads](https://github.com/droidian-images/rootfs-api28gsi-all/releases)
 - The script depends on the `yaml` Python package, you need to install it before using running the script.
 - Google Pixel 3a (sargo)
