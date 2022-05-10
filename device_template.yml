@@ -3,6 +3,7 @@
   codename:
   fastboot_mode: '`Vol-` and `Power`'
   recovery_mode: '`Vol+` and `Power`'
+  ab_slot:
   api_version:
   arch:
   droidian_release:
@@ -13,11 +14,11 @@
       link:
       text:
       filename:
-  lineageos:
+  vendor_zip:
       link:
       text:
       filename:
-  vendor:
+  vendor_image:
       link:
       text:
       filename:
