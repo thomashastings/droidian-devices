@@ -31,6 +31,7 @@
       link: https://dl.twrp.me/beryllium/
       text: Latest TWRP recovery
       filename: twrp-VERSION-beryllium.img
+      must_flash:
   adaptation:
       link: https://github.com/Unofficial-droidian-for-pocof1/android-recovery-beryllium-adaptation/releases
       text: Droidian adaptation zip (unofficial)
@@ -85,6 +86,7 @@
       link: https://dl.twrp.me/wayne/
       text: Latest TWRP image
       filename: twrp-VERSION-wayne.img
+      must_flash:
   adaptation:
       link: https://github.com/Droidian-Mi-A2-6X/adaptation-xiaomi-wayne/releases
       text: Latest adaptation zip
@@ -133,6 +135,7 @@
       link: https://orangefox.download/device/violet
       text: Latest Orange Fox Recovery
       filename: OrangeFox-violet-stable@VERSION.zip
+      must_flash: True
   adaptation:
       link:
       text:
@@ -186,6 +189,7 @@
       link: https://dl.twrp.me/jasmine_sprout/
       text: Latest TWRP image
       filename: twrp-VERSION-jasmine_sprout.img
+      must_flash:
   adaptation:
       link: https://github.com/thomashastings/droidian-recovery-adaptation-jasmine/releases
       text: Adaptation (unofficial)
@@ -234,6 +238,7 @@
       link: https://dl.twrp.me/X01BD/
       text: Latest TWRP recovery
       filename: twrp-VERSION-X01BD.img
+      must_flash:
   adaptation:
       link: https://github.com/thomashastings/droidian-x01bd-guide/releases/download/v0.1/x01bd-adaptation_20220508.zip
       text: Droidian adaptation zip (unofficial)
