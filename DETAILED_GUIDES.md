@@ -6,7 +6,7 @@
 - [Vendor image](https://github.com/ubports-beryllium/artifacts/releases/download/v3/vendor_image.img)
 - [Latest boot image](https://github.com/Unofficial-droidian-for-pocof1/linux_android_xiaomi_beryllium/releases)
 - [Latest TWRP recovery](https://dl.twrp.me/beryllium/)
-- [Droidian adaptation zip (unofficial)](https://github.com/Unofficial-droidian-for-pocof1/android-recovery-beryllium-adaptation/releases)
+- [Adaptation (unofficial)](https://github.com/Unofficial-droidian-for-pocof1/android-recovery-beryllium-adaptation/releases)
 
 
 ## 1. Device preparation
@@ -24,7 +24,7 @@
 - Wipe the device (TWRP)
     - Go to the `Wipe` menu
     - Select `Advanced wipe`
-    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `vendor_image`, `Data`
+    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `Vendor`, `Data`
     - Swipe to Wipe
     - Go back to the previous menu
     - Choose `Format data` and type `yes`
@@ -39,13 +39,13 @@
 - Install the required base Android version (9, 10, 11)
     - Install the file called `fw_beryllium_miui_POCOF1Global_9.6.27_6673f8a455_9.0.zip` as a Zip file
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload fw_beryllium_miui_POCOF1Global_9.6.27_6673f8a455_9.0.zip`
-- Install the vendor_image image
+- Install the vendor image
     - Install the file called `vendor.img` as an Image to the `Vendor` partition
-    - Alternatively, you can enter fastboot mode and `fastboot flash vendor_image vendor.img`
-- Install the vendor_image image
+    - Alternatively, you can enter fastboot mode and `fastboot flash vendor vendor.img`
+- Install the boot image
     - Install the file called `boot.img` as an Image to the `Boot` partition
     - Alternatively, you can enter fastboot mode and `fastboot flash boot boot.img`
-- Install Recovery
+- Install recovery
     - Install the file called `twrp-VERSION-beryllium.img` as an Image to the `Recovery` partition
 - Install Droidian `rootfs`
     - Install the file named `droidian-rootfs-arm64_YYYYMMDD.zip` as a Zip file
@@ -126,7 +126,7 @@ You can ask for assistance specific to this device at [Droidian for Poco F1 Tele
 - Wipe the device (TWRP)
     - Go to the `Wipe` menu
     - Select `Advanced wipe`
-    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `vendor_image`, `Data`
+    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `Vendor`, `Data`
     - Swipe to Wipe
     - Go back to the previous menu
     - Choose `Format data` and type `yes`
@@ -141,10 +141,10 @@ You can ask for assistance specific to this device at [Droidian for Poco F1 Tele
 - Install the required base Android version (9, 10, 11)
     - Install the file called `jasmine_sprout_stock_android9.zip` as a Zip file
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload jasmine_sprout_stock_android9.zip`
-- Install the required vendor_zip version
+- Install the required vendor version
     - Install the file called `fw-vendor_image_wayne_miui_MI6X_V11.0.6.0.PDCCNXM_f049df201b_9.0.zip`
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload fw-vendor_image_wayne_miui_MI6X_V11.0.6.0.PDCCNXM_f049df201b_9.0.zip`
-- Install Recovery
+- Install recovery
     - Install the file called `twrp-VERSION-wayne.img` as an Image to the `Recovery` partition
 - Install Droidian `rootfs`
     - Install the file named `droidian-rootfs-arm64_YYYYMMDD.zip` as a Zip file
@@ -196,9 +196,10 @@ You can ask for assistance specific to this device at [Shouko's Lab Telegram Gro
 ## 0. Download the needed files and tools
 - [Droidian `rootfs` and `devtools`](https://github.com/droidian-images/rootfs-api28gsi-all/releases) for `arch64` (nightly releases include devtools)
 - [Android 9 Pie Firmware](https://xiaomifirmwareupdater.com/firmware/violet/weekly/9.9.3/)
-- [Android 9 vendor_image](https://github.com/ubuntu-touch-violet/ubuntu-touch-violet/releases/tag/2021051)
+- [Android 9 vendor](https://github.com/ubuntu-touch-violet/ubuntu-touch-violet/releases/tag/20210510)
 - [Halium-boot](https://gitlab.com/mathew-dennis/xiaomi-violet/-/jobs/2428049402/artifacts/file/out/boot.img)
 - [Latest Orange Fox Recovery](https://orangefox.download/device/violet)
+- [Adaptation (unofficial)](https://github.com/mathew-dennis/droidian-recovery-flashing-adaptation-violet/releases/tag/v1.1)
 
 
 ## 1. Device preparation
@@ -211,18 +212,19 @@ You can ask for assistance specific to this device at [Shouko's Lab Telegram Gro
 - Unlock the bootloader (Computer)
     - Refer to the instructions provided by the device manufacturer
     - Other useful sources include the [LineageOS wiki](https://wiki.lineageos.org/devices/) and [xda-developers](https://www.xda-developers.com/search2/)
-- Boot into recovery (Computer)
-    - Boot Orange Fox Recovery by running `fastboot boot OrangeFox-violet-stable@VERSION.zip`
+- Flash recovery (Computer)
+    - Flash Orange Fox Recovery to your device by running `fastboot flash recovery OrangeFox-violet-stable@VERSION.zip`
+    - Boot into recovery by pressing `Vol+` and `Power`
+    - If your device boots to the stock recovery menu at some point, you should repeat this step.
 - Wipe the device (Orange Fox Recovery)
     - Go to the `Wipe` menu
     - Select `Advanced wipe`
-    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `vendor_image`, `Data`
+    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `Vendor`, `Data`
     - Swipe to Wipe
     - Go back to the previous menu
     - Choose `Format data` and type `yes`
     - Go back to the main menu and select `Reboot`
-    - Choose `Bootloader`
-    - Boot Orange Fox Recovery again by running `fastboot boot OrangeFox-violet-stable@VERSION.zip`
+    - Choose `Recovery`
 - Copy the files to the device  (Computer)
     - When Orange Fox Recovery is booted, open the device's `Internal storage` from your computer
     - Copy all of the files you downloaded to this folder
@@ -231,14 +233,12 @@ You can ask for assistance specific to this device at [Shouko's Lab Telegram Gro
 - Install the required base Android version (9, 10, 11)
     - Install the file called `fw_violet_miui_VIOLET_9.9.3_79d3ccd33b_9.0.zip` as a Zip file
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload fw_violet_miui_VIOLET_9.9.3_79d3ccd33b_9.0.zip`
-- Install the required vendor_zip version
-    - Install the file called `https://github.com/ubuntu-touch-violet/ubuntu-touch-violet/releases/tag/20210510`
-    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload https://github.com/ubuntu-touch-violet/ubuntu-touch-violet/releases/tag/20210510`
-- Install the vendor_image image
+- Install the required vendor version
+    - Install the file called `vendor.zip`
+    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload vendor.zip`
+- Install the boot image
     - Install the file called `boot.img` as an Image to the `Boot` partition
     - Alternatively, you can enter fastboot mode and `fastboot flash boot boot.img`
-- Install Recovery
-    - Please, follow the official guide to install Orange Fox Recovery
 - Install Droidian `rootfs`
     - Install the file named `droidian-rootfs-arch64_YYYYMMDD.zip` as a Zip file
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload droidian-rootfs-arch64_YYYYMMDD.zip`
@@ -249,25 +249,18 @@ You can ask for assistance specific to this device at [Shouko's Lab Telegram Gro
     - Installation is optional for stable releases, but it is recommended, because it helps with debugging
 
 ## 3. Finalizing the installation
+- Install adaptation package as a flashable zip (Orange Fox Recovery)
+    - Install the file named `droidian-recovery-flashing-adaptation-violet.zip` as a Zip file
+    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload droidian-recovery-flashing-adaptation-violet.zip`
 - Boot your device
     - Go to the `Reboot` menu and choose `System`
     - Orange Fox Recovery might complain that there is no OS installed, but that's fine
     - The first boot may take longer, and at least one spontaneous reboot is expected during the process
     - You should be greeted with the lock screen, the default password is `1234`
-- Run a specific command after first boot (Droidian)
-    - Open the `King's Cross` application or connect via SSH (see the `SSH` entry in the Notes below), and type in the following:
-```
-sudo -s
-DEVICE=violet
-cat /var/lib/lxc/android/rootfs/ueventd*.rc /vendor/ueventd*.rc | grep ^/dev | sed -e 's/^\/dev\///' | awk '{printf "ACTION==\"add\", KERNEL==\"%s\", OWNER=\"%s\", GROUP=\"%s\", MODE=\"%s\"\n",$1,$3,$4,$2}' | sed -e 's/\r//' >/etc/udev/rules.d/70-$DEVICE.rules
-```
 
 Congratulations, if everything went well, now you should be running Droidian.
 
 ## Notes
-### Adaptation
-Follow [this guide](https://github.com/mathew-dennis/droidian-violet-guide/blob/main/README.md) for device adaptation.
-
 ### SSH
 Flashing the `devtools` zip enables `SSH` over USB. To use it, connect your phone to your computer and type `ssh droidian@10.15.19.82`, the password is `1234` (on Windows, you may need [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/))
 
@@ -311,7 +304,7 @@ You can find a list of mobile-friendly Linux applications at [LinuxPhoneApps](ht
 - Wipe the device (TWRP)
     - Go to the `Wipe` menu
     - Select `Advanced wipe`
-    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `vendor_image`, `Data`
+    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `Vendor`, `Data`
     - Swipe to Wipe
     - Go back to the previous menu
     - Choose `Format data` and type `yes`
@@ -336,7 +329,7 @@ You can find a list of mobile-friendly Linux applications at [LinuxPhoneApps](ht
     - Install the file called `jasmine_sprout_stock_android9.zip` as a Zip file
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload jasmine_sprout_stock_android9.zip`
     - For the rest of the guide, keep using `Slot A`
-- Install Recovery
+- Install recovery
     - Install the file called `twrp-VERSION-jasmine_sprout.img` as an Image to the `Recovery` partition
 - Install Droidian `rootfs`
     - Install the file named `droidian-rootfs-arm64_YYYYMMDD.zip` as a Zip file
@@ -389,7 +382,7 @@ You can ask for assistance specific to this device at [Shouko's Lab Telegram Gro
 - [Droidian `rootfs`](https://github.com/droidian-images/rootfs-api28gsi-all/releases/download/droidian%2Fbullseye%2F22/droidian-rootfs-api28gsi-arm64_20210531.zip) (specific build required)
 - [Droidian `devtools`](https://github.com/droidian-images/rootfs-api28gsi-all/releases/download/droidian%2Fbullseye%2F22/droidian-devtools-arm64_20210531.zip) (specific build required)
 - [Android 9 (Pie) stock firmware](https://dlcdnets.asus.com/pub/ASUS/ZenFone/ZB631KL/UL-ASUS_X01BD-WW-16.2017.1912.072.999-user.zip)
-- [vendor_zip 16 (unofficial build)](https://sourceforge.net/projects/kubersharma001/files/X01BD/lineage-16.0/lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download)
+- [LineageOS 16 (unofficial build)](https://sourceforge.net/projects/kubersharma001/files/X01BD/lineage-16.0/lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download)
 - [Latest TWRP recovery](https://dl.twrp.me/X01BD/)
 - [Droidian adaptation zip (unofficial)](https://github.com/thomashastings/droidian-x01bd-guide/releases/download/v0.1/x01bd-adaptation_20220508.zip)
 
@@ -407,7 +400,7 @@ You can ask for assistance specific to this device at [Shouko's Lab Telegram Gro
 - Wipe the device (TWRP)
     - Go to the `Wipe` menu
     - Select `Advanced wipe`
-    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `vendor_image`, `Data`
+    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `Vendor`, `Data`
     - Swipe to Wipe
     - Go back to the previous menu
     - Choose `Format data` and type `yes`
@@ -422,10 +415,10 @@ You can ask for assistance specific to this device at [Shouko's Lab Telegram Gro
 - Install the required base Android version (9, 10, 11)
     - Install the file called `UL-ASUS_X01BD-WW-16.2017.1912.072.999-user.zip` as a Zip file
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload UL-ASUS_X01BD-WW-16.2017.1912.072.999-user.zip`
-- Install the required vendor_zip version
+- Install the required vendor version
     - Install the file called `lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download`
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload lineage-16.0-20191119-UNOFFICIAL-X01BD.zip/download`
-- Install Recovery
+- Install recovery
     - Install the file called `twrp-VERSION-X01BD.img` as an Image to the `Recovery` partition
 - Install Droidian `rootfs`
     - Install the file named `droidian-rootfs-arm64_YYYYMMDD.zip` as a Zip file
@@ -459,6 +452,8 @@ Flashing the `devtools` zip enables `SSH` over USB. To use it, connect your phon
 You can find a list of mobile-friendly Linux applications at [LinuxPhoneApps](https://linuxphoneapps.org/)
 
 ## Credit
+[thomashastings](https://github.com/thomashastings)
+
 [aboothahir](https://gitlab.com/iAboothahir)
 
 [kubersharma](https://sourceforge.net/u/kubersharma/profile/)
