@@ -36,18 +36,27 @@ for device in devices:
     outlines.append("- Unlock the bootloader (Computer)")
     outlines.append("    - Refer to the instructions provided by the device manufacturer")
     outlines.append("    - Other useful sources include the [LineageOS wiki](https://wiki.lineageos.org/devices/) and [xda-developers](https://www.xda-developers.com/search2/)")
-    outlines.append("- Boot into recovery (Computer)")
-    outlines.append("    - Boot "+device['recovery']['name']+" by running `fastboot boot "+device['recovery']['filename']+"`")
+    if device['recovery']['must_flash'] == True:
+        outlines.append("- Flash recovery (Computer)")
+        outlines.append("    - Flash "+device['recovery']['name']+" to your device by running `fastboot flash recovery "+device['recovery']['filename']+"`")
+        outlines.append("    - Boot into recovery by pressing "+device['recovery_mode'])
+        outlines.append("    - If your device boots to the stock recovery menu at some point, you should repeat this step.") 
+    else:
+        outlines.append("- Boot into recovery (Computer)")
+        outlines.append("    - Boot "+device['recovery']['name']+" by running `fastboot boot "+device['recovery']['filename']+"`")
     outlines.append("- Wipe the device ("+device['recovery']['name']+")")
     outlines.append("    - Go to the `Wipe` menu")
     outlines.append("    - Select `Advanced wipe`")
-    outlines.append("    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `vendor_image`, `Data`")
+    outlines.append("    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `Vendor`, `Data`")
     outlines.append("    - Swipe to Wipe")
     outlines.append("    - Go back to the previous menu")
     outlines.append("    - Choose `Format data` and type `yes`")
     outlines.append("    - Go back to the main menu and select `Reboot`")
-    outlines.append("    - Choose `Bootloader`")
-    outlines.append("    - Boot "+device['recovery']['name']+" again by running `fastboot boot "+device['recovery']['filename']+"`")
+    if device['recovery']['must_flash'] == True:
+        outlines.append("    - Choose `Recovery`")       
+    else:
+        outlines.append("    - Choose `Bootloader`")
+        outlines.append("    - Boot "+device['recovery']['name']+" again by running `fastboot boot "+device['recovery']['filename']+"`")
     outlines.append("- Copy the files to the device  (Computer)")
     outlines.append("    - When "+device['recovery']['name']+" is booted, open the device's `Internal storage` from your computer")
     outlines.append("    - Copy all of the files you downloaded to this folder")
@@ -81,22 +90,22 @@ for device in devices:
             outlines.append("    - Install the file called `"+device['android']['filename']+"` as a Zip file")
             outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload "+device['android']['filename']+"`")
         if device['vendor_zip']['filename'] is not None:
-            outlines.append("- Install the required vendor_zip version")
+            outlines.append("- Install the required vendor version")
             outlines.append("    - Install the file called `"+device['vendor_zip']['filename']+"`")
             outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload "+device['vendor_zip']['filename']+"`")
     if device['vendor_image']['filename'] is not None:
-        outlines.append("- Install the vendor_image image")
+        outlines.append("- Install the vendor image")
         outlines.append("    - Install the file called `"+device['vendor_image']['filename']+"` as an Image to the `Vendor` partition")
-        outlines.append("    - Alternatively, you can enter fastboot mode and `fastboot flash vendor_image "+device['vendor_image']['filename']+"`")
+        outlines.append("    - Alternatively, you can enter fastboot mode and `fastboot flash vendor "+device['vendor_image']['filename']+"`")
     if device['boot']['filename'] is not None:
-        outlines.append("- Install the vendor_image image")
+        outlines.append("- Install the boot image")
         outlines.append("    - Install the file called `"+device['boot']['filename']+"` as an Image to the `Boot` partition")
         outlines.append("    - Alternatively, you can enter fastboot mode and `fastboot flash boot "+device['boot']['filename']+"`")
-    if device['recovery']['filename'] is not None:
-        outlines.append("- Install Recovery")
+    if device['recovery']['filename'] is not None and device['recovery']['must_flash'] is not True:
+        outlines.append("- Install recovery")
         if device['recovery']['name'] == "TWRP":
             outlines.append("    - Install the file called `"+device['recovery']['filename']+"` as an Image to the `Recovery` partition")
-        else:
+        elif device['recovery']['must_flash'] is not True:
             outlines.append("    - Please, follow the official guide to install "+device['recovery']['name'])
     outlines.append("- Install Droidian `rootfs`")
     outlines.append("    - Install the file named `droidian-rootfs-"+device['arch']+"_YYYYMMDD.zip` as a Zip file")
