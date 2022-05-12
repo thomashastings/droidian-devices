@@ -32,4 +32,4 @@ These are the parameters used in `devices.yml`. Start each device entry with a `
 
 \* `android`, `vendor_zip`, `vendor_image`, and `boot` have multiple parts. The `link` contains the actual link to the file or release page; the `text` contains the string what the download link should say in the page; and the `filename` specifies the name of the file that identifies the file when flashing.
 
-\*\* `recovery` has a further entry called `name`, this specifies the name of the recovery, e. g., `TWRP` or `Orange Fox Recovery`
+\*\* `recovery` has two further entry called `name` and `must_flash`. `name` specifies the name of the recovery, e. g., `TWRP` or `Orange Fox Recovery`; if `must_flash` is set to `True`, the user will be prompted to flash the recovery instead of just booting it (some devices have been reported to not support directly booting to the recovery image)
