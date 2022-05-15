@@ -1,14 +1,21 @@
 import yaml
 import os
+from schema import Or, Schema, SchemaError
+from schema_validation import validate_file
 
-if os.path.isfile('devices.yml'):
-        devices = yaml.load(open('devices.yml', 'r'),Loader=yaml.FullLoader)
-else:
-    print('No devices.yml found, exiting')
+# Check for valid files
+devices = []
+for file in os.listdir("devices"):
+    device = yaml.load(open(f"devices/{file}", 'r'),Loader=yaml.FullLoader)
+    if validate_file(device) == True:
+        devices.append(device)
+    
+if devices == []:
+    print('No valid device files found, exiting')
     exit()
-
 print()
 
+# Generate markdown as a list of lines
 outlines = []
 for device in devices:
     print('Generating', device['codename'],"...")
@@ -167,6 +174,7 @@ for device in devices:
     outlines.append("")
     outlines.append("")
 
+# Output list of lines to the target file
 outfile_name = "DETAILED_GUIDES.md"
 outfile = open(outfile_name, 'w')
 for line in outlines:
