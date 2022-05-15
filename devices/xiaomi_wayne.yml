@@ -1,0 +1,49 @@
+manufacturer: Xiaomi
+name: Mi 6X
+codename: wayne
+fastboot_mode: '`Vol-` and `Power`'
+recovery_mode: '`Vol+` and `Power`'
+ab_slot: False
+api_version: API28
+arch: arm64
+droidian_release: https://github.com/droidian-images/rootfs-api28gsi-all/releases
+droidian_required_build: 
+  rootfs_link:
+  devtools_link:
+android:
+  link: https://github.com/ubports-xiaomi-sdm660/artifacts/releases/download/v0.1/jasmine_sprout_stock_android9.zip
+  text: Android 9 Pie Firmware
+  filename: jasmine_sprout_stock_android9.zip
+vendor_zip:
+  link: https://github.com/TryHardDood/mi-vendor_image-updater/releases/download/wayne-stable/fw-vendor_image_wayne_miui_MI6X_V11.0.6.0.PDCCNXM_f049df201b_9.0.zip
+  text: Vendor (has arb4 firmware!)
+  filename: fw-vendor_image_wayne_miui_MI6X_V11.0.6.0.PDCCNXM_f049df201b_9.0.zip
+vendor_image:
+  link:
+  text:
+  filename:
+boot:
+  link:
+  text:
+  filename:
+recovery:
+  name: TWRP
+  link: https://dl.twrp.me/wayne/
+  text: Latest TWRP image
+  filename: twrp-VERSION-wayne.img
+  must_flash:
+adaptation:
+  link: https://github.com/Droidian-Mi-A2-6X/adaptation-xiaomi-wayne/releases
+  text: Latest adaptation zip
+  filename: droidian-adaptation-xiaomi-wayne-arm64_MMMMDDYY.zip 
+statuspage: https://github.com/orgs/Droidian-Mi-A2-6X/projects/1
+contact:
+  text: Shouko's Lab Telegram Group
+  link: https://t.me/shoukolab 
+credit:
+   - name: kisekinopureya
+     link: https://github.com/kisekinopureya
+   - name: Shouko
+     link: https://xn--n8ja0d4b0j7a.xn--q9jyb4c/
+command:
+notes:

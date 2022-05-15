@@ -1,0 +1,55 @@
+manufacturer: Xiaomi
+name: Pocophone F1
+codename: beryllium
+fastboot_mode: '`Vol-` and `Power`'
+recovery_mode: '`Vol+` and `Power`'
+ab_slot: False
+api_version: API28
+arch: arm64
+droidian_release: https://github.com/droidian-images/rootfs-api28gsi-all/releases
+droidian_required_build:
+  rootfs_link:
+  devtools_link:
+android:
+  link: https://xiaomifirmwareupdater.com/download/?file=fw_beryllium_miui_POCOF1Global_9.6.27_6673f8a455_9.0.zip
+  text: Android 9 (Pie) stock firmware
+  filename: fw_beryllium_miui_POCOF1Global_9.6.27_6673f8a455_9.0.zip
+vendor_zip:
+  link:
+  text:
+  filename:
+vendor_image:
+  link: https://github.com/ubports-beryllium/artifacts/releases/download/v3/vendor_image.img
+  text: Vendor image
+  filename: vendor.img
+boot:
+  link: https://github.com/Unofficial-droidian-for-pocof1/linux_android_xiaomi_beryllium/releases
+  text: Latest boot image
+  filename: boot.img
+recovery:
+  name: TWRP
+  link: https://dl.twrp.me/beryllium/
+  text: Latest TWRP recovery
+  filename: twrp-VERSION-beryllium.img
+  must_flash:
+adaptation:
+  link: https://github.com/Unofficial-droidian-for-pocof1/android-recovery-beryllium-adaptation/releases
+  text: Adaptation (unofficial)
+  filename: android-recovery-beryllium-adaptation_YYYYMMDD.zip
+statuspage:
+contact:
+  text: Droidian for Poco F1 Telegram Group
+  link: https://t.me/pocof1droidian
+credit:
+  - name: Joel Selvaraj
+    link: https://github.com/joelselvaraj
+  - name: 1petro
+    link: https://github.com/1petro
+command:
+  - sudo systemctl enable enable-ipa
+    sudo systemctl reboot
+notes:
+  - title: SIM slot
+    text: Dual-SIM mode is not supported as of now. Only the SIM2 slot is active, so a microSD card can be used at the same time.
+  - title: Extras
+    text: For other tweaks, open the `King's Cross` terminal app, and run `beryllium-extras.sh`. This includes a notch fix and automated installation of Waydroid.
