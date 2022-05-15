@@ -18,18 +18,18 @@ print()
 # Generate markdown as a list of lines
 outlines = []
 for device in devices:
-    print('Generating', device['codename'],"...")
-    outlines.append("# "+device['manufacturer']+" "+device['name']+" ("+device['codename']+")")
+    print(f"Generating {device['codename']}...")
+    outlines.append(f"# {device['manufacturer']} {device['name']} ({device['codename']})")
     outlines.append("**Make a backup now, as your device will be wiped.**")
     outlines.append("## 0. Download the needed files and tools")
     if device['droidian_required_build'] == None or device['droidian_required_build']['rootfs_link'] == None:
-        outlines.append("- [Droidian `rootfs` and `devtools`]("+device['droidian_release']+") for `"+device['arch']+"` (nightly releases include devtools)")
+        outlines.append(f"- [Droidian `rootfs` and `devtools`]({device['droidian_release']}) for `{device['arch']}` (nightly releases include devtools)")
     else:
-        outlines.append("- [Droidian `rootfs`]("+device['droidian_required_build']['rootfs_link']+") (specific build required)")
-        outlines.append("- [Droidian `devtools`]("+device['droidian_required_build']['devtools_link']+") (specific build required)")
+        outlines.append(f"- [Droidian `rootfs`]({device['droidian_required_build']['rootfs_link']}) (specific build required)")
+        outlines.append(f"- [Droidian `devtools`]({device['droidian_required_build']['devtools_link']}) (specific build required)")
     for downloadable in ["android", "vendor_zip", "vendor_image", "boot", "recovery", "adaptation"]:
         if device[downloadable]["link"] is not None:
-                outlines.append("- ["+device[downloadable]['text']+"]("+device[downloadable]['link']+")")
+                outlines.append(f"- [{device[downloadable]['text']}]({device[downloadable]['link']})")
     outlines.append("")
     outlines.append("")
     outlines.append("## 1. Device preparation")
@@ -45,13 +45,13 @@ for device in devices:
     outlines.append("    - Other useful sources include the [LineageOS wiki](https://wiki.lineageos.org/devices/) and [xda-developers](https://www.xda-developers.com/search2/)")
     if device['recovery']['must_flash'] == True:
         outlines.append("- Flash recovery (Computer)")
-        outlines.append("    - Flash "+device['recovery']['name']+" to your device by running `fastboot flash recovery "+device['recovery']['filename']+"`")
-        outlines.append("    - Boot into recovery by pressing "+device['recovery_mode'])
+        outlines.append(f"    - Flash {device['recovery']['name']} to your device by running `fastboot flash recovery {device['recovery']['filename']}`")
+        outlines.append(f"    - Boot into recovery by pressing {device['recovery_mode']}")
         outlines.append("    - If your device boots to the stock recovery menu at some point, you should repeat this step.") 
     else:
         outlines.append("- Boot into recovery (Computer)")
-        outlines.append("    - Boot "+device['recovery']['name']+" by running `fastboot boot "+device['recovery']['filename']+"`")
-    outlines.append("- Wipe the device ("+device['recovery']['name']+")")
+        outlines.append(f"    - Boot {device['recovery']['name']} by running `fastboot boot {device['recovery']['filename']}`")
+    outlines.append(f"- Wipe the device ({device['recovery']['name']})")
     outlines.append("    - Go to the `Wipe` menu")
     outlines.append("    - Select `Advanced wipe`")
     outlines.append("    - Tick the boxes called `Dalvik / ART cache`, `Cache`, `System`, `Vendor`, `Data`")
@@ -63,79 +63,79 @@ for device in devices:
         outlines.append("    - Choose `Recovery`")       
     else:
         outlines.append("    - Choose `Bootloader`")
-        outlines.append("    - Boot "+device['recovery']['name']+" again by running `fastboot boot "+device['recovery']['filename']+"`")
+        outlines.append(f"    - Boot {device['recovery']['name']} again by running `fastboot boot {device['recovery']['filename']}`")
     outlines.append("- Copy the files to the device  (Computer)")
-    outlines.append("    - When "+device['recovery']['name']+" is booted, open the device's `Internal storage` from your computer")
+    outlines.append(f"    - When {device['recovery']['name']} is booted, open the device's `Internal storage` from your computer")
     outlines.append("    - Copy all of the files you downloaded to this folder")
     outlines.append("")
-    outlines.append("## 2. Droidian installation ("+device['recovery']['name']+")")
+    outlines.append(f"## 2. Droidian installation ({device['recovery']['name']})")
     if device['ab_slot'] == True:
         outlines.append("- Install base Android version and/or Vendor to both A/B slots")
         outlines.append("  - Go to the `Reboot` menu and see which slot is active")
-        outlines.append("  - If it says `Slot A`, then select `Slot B` to be the active slot, and boot "+device['recovery']['name']+" again")
+        outlines.append(f"  - If it says `Slot A`, then select `Slot B` to be the active slot, and boot {device['recovery']['name']} again")
         outlines.append("")
         outlines.append("- **With `Slot B` as active:**")
         if device['android']['filename'] is not None:
-            outlines.append("    - Install the file called `"+device['android']['filename']+"` as a Zip file")
-            outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload "+device['android']['filename']+"`")
+            outlines.append(f"    - Install the file called `{device['android']['filename']}` as a Zip file")
+            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['android']['filename']}`")
         if device['vendor_zip']['filename'] is not None:
-            outlines.append("    - Install the file called `"+device['vendor_zip']['filename']+"`")
-            outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload "+device['vendor_zip']['filename']+"`")
-        outlines.append("-    Now switch back to `Slot A` and boot "+device['recovery']['name']+" again (must boot again, switching is not enough)")
+            outlines.append(f"    - Install the file called `{device['vendor_zip']['filename']}`")
+            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['vendor_zip']['filename']}`")
+        outlines.append(f"-    Now switch back to `Slot A` and boot {device['recovery']['name']} again (must boot again, switching is not enough)")
         outlines.append("")
         outlines.append("- **With `Slot A` as active:**")
         if device['android']['filename'] is not None:
-            outlines.append("    - Install the file called `"+device['android']['filename']+"` as a Zip file")
-            outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload "+device['android']['filename']+"`")
+            outlines.append(f"    - Install the file called `{device['android']['filename']}` as a Zip file")
+            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['android']['filename']}`")
         if device['vendor_zip']['filename'] is not None:
-            outlines.append("    - Install the file called `"+device['vendor_zip']['filename']+"`")
-            outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload "+device['vendor_zip']['filename']+"`")
+            outlines.append(f"    - Install the file called `{device['vendor_zip']['filename']}`")
+            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['vendor_zip']['filename']}`")
         outlines.append("    - For the rest of the guide, keep using `Slot A`")
     else:     
         if device['android']['filename'] is not None:
             outlines.append("- Install the required base Android version (9, 10, 11)")
-            outlines.append("    - Install the file called `"+device['android']['filename']+"` as a Zip file")
-            outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload "+device['android']['filename']+"`")
+            outlines.append(f"    - Install the file called `{device['android']['filename']}` as a Zip file")
+            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['android']['filename']}`")
         if device['vendor_zip']['filename'] is not None:
             outlines.append("- Install the required vendor version")
-            outlines.append("    - Install the file called `"+device['vendor_zip']['filename']+"`")
-            outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload "+device['vendor_zip']['filename']+"`")
+            outlines.append(f"    - Install the file called `{device['vendor_zip']['filename']}`")
+            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['vendor_zip']['filename']}`")
     if device['vendor_image']['filename'] is not None:
         outlines.append("- Install the vendor image")
-        outlines.append("    - Install the file called `"+device['vendor_image']['filename']+"` as an Image to the `Vendor` partition")
-        outlines.append("    - Alternatively, you can enter fastboot mode and `fastboot flash vendor "+device['vendor_image']['filename']+"`")
+        outlines.append(f"    - Install the file called `{device['vendor_image']['filename']}` as an Image to the `Vendor` partition")
+        outlines.append(f"    - Alternatively, you can enter fastboot mode and `fastboot flash vendor {device['vendor_image']['filename']}`")
     if device['boot']['filename'] is not None:
         outlines.append("- Install the boot image")
-        outlines.append("    - Install the file called `"+device['boot']['filename']+"` as an Image to the `Boot` partition")
-        outlines.append("    - Alternatively, you can enter fastboot mode and `fastboot flash boot "+device['boot']['filename']+"`")
+        outlines.append(f"    - Install the file called `{device['boot']['filename']}` as an Image to the `Boot` partition")
+        outlines.append(f"    - Alternatively, you can enter fastboot mode and `fastboot flash boot {device['boot']['filename']}`")
     if device['recovery']['filename'] is not None and device['recovery']['must_flash'] is not True:
         outlines.append("- Install recovery")
         if device['recovery']['name'] == "TWRP":
-            outlines.append("    - Install the file called `"+device['recovery']['filename']+"` as an Image to the `Recovery` partition")
+            outlines.append(f"    - Install the file called `{device['recovery']['filename']}` as an Image to the `Recovery` partition")
         elif device['recovery']['must_flash'] is not True:
-            outlines.append("    - Please, follow the official guide to install "+device['recovery']['name'])
+            outlines.append(f"    - Please, follow the official guide to install {device['recovery']['name']}")
     outlines.append("- Install Droidian `rootfs`")
-    outlines.append("    - Install the file named `droidian-rootfs-"+device['arch']+"_YYYYMMDD.zip` as a Zip file")
-    outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload droidian-rootfs-"+device['arch']+"_YYYYMMDD.zip`")
+    outlines.append(f"    - Install the file named `droidian-rootfs-{device['arch']}_YYYYMMDD.zip` as a Zip file")
+    outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload droidian-rootfs-{device['arch']}_YYYYMMDD.zip`")
     outlines.append("- Install `devtools` (for stable release)")
-    outlines.append("    - Install the file named `droidian-devtools-"+device['arch']+"_YYYYMMDD.zip` as a Zip file")
-    outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload droidian-devtools-"+device['arch']+"_YYYYMMDD.zip`")
+    outlines.append(f"    - Install the file named `droidian-devtools-{device['arch']}_YYYYMMDD.zip` as a Zip file")
+    outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload droidian-devtools-{device['arch']}_YYYYMMDD.zip`")
     outlines.append("    - This component is already included in nightly builds")
     outlines.append("    - Installation is optional for stable releases, but it is recommended, because it helps with debugging")
     outlines.append("")
     outlines.append("## 3. Finalizing the installation")
     if device['adaptation']['filename'] is not None:
-        outlines.append("- Install adaptation package as a flashable zip ("+device['recovery']['name']+")")
-        outlines.append("    - Install the file named `"+device['adaptation']['filename']+"` as a Zip file")
-        outlines.append("    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload "+device['adaptation']['filename']+"`")
+        outlines.append(f"- Install adaptation package as a flashable zip ({device['recovery']['name']})")
+        outlines.append(f"    - Install the file named `{device['adaptation']['filename']}` as a Zip file")
+        outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['adaptation']['filename']}`")
     outlines.append("- Boot your device")
     outlines.append("    - Go to the `Reboot` menu and choose `System`")
-    outlines.append("    - "+device['recovery']['name']+" might complain that there is no OS installed, but that's fine")
+    outlines.append(f"    - {device['recovery']['name']} might complain that there is no OS installed, but that's fine")
     outlines.append("    - The first boot may take longer, and at least one spontaneous reboot is expected during the process")
     outlines.append("    - You should be greeted with the lock screen, the default password is `1234`")
     if device['command'] is not None:
         outlines.append("- Run a specific command after first boot (Droidian)")
-        outlines.append("    - Open the `King's Cross` application or connect via SSH (see the `SSH` entry in the Notes below), and type in the following:")
+        outlines.append(f"    - Open the `King's Cross` application or connect via SSH (see the `SSH` entry in the Notes below), and type in the following:")
         outlines.append("```")
         for line in device['command']:
             outlines.append(line)
@@ -146,12 +146,12 @@ for device in devices:
     outlines.append("## Notes")
     if device['notes'] is not None:
         for note in device['notes']:
-            outlines.append("### "+note['title'])
+            outlines.append(f"### {note['title']}")
             outlines.append(note['text'])
             outlines.append("")
     if device['statuspage'] is not None:
         outlines.append("### Porting status")
-        outlines.append("You can check out the status of the port [here]("+device['statuspage']+")")
+        outlines.append(f"You can check out the status of the port [here]({device['statuspage']})")
         outlines.append("")
     outlines.append("### SSH")
     outlines.append("Flashing the `devtools` zip enables `SSH` over USB. To use it, connect your phone to your computer and type `ssh droidian@10.15.19.82`, the password is `1234` (on Windows, you may need [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/))")
@@ -161,7 +161,7 @@ for device in devices:
     outlines.append("")
     outlines.append("## Credit")
     for credit in device['credit']:
-        outlines.append("["+credit['name']+"]("+credit['link']+")")
+        outlines.append(f"[{credit['name']}]({credit['link']})")
         outlines.append("")
     outlines.append("[Droidian](http://droidian.org/)")
     outlines.append("")
@@ -170,7 +170,7 @@ for device in devices:
     outlines.append("[UBports](https://ubuntu-touch.io/)")
     outlines.append("")
     if device['contact']['link'] is not None:
-        outlines.append("You can ask for assistance specific to this device at ["+device['contact']['text']+"]("+device['contact']['link']+").")
+        outlines.append(f"You can ask for assistance specific to this device at [{device['contact']['text']}]({device['contact']['link']}).")
     outlines.append("")
     outlines.append("")
 
