@@ -6,6 +6,10 @@ device_schema = Schema({
     'manufacturer': str,
     'name': str,
     'codename': str,
+    // TODO : support has to be changed from str to have values as community or official
+    'support': str,
+    'device_type': str,
+    'halium_version': str,
     'fastboot_mode': str,
     'recovery_mode': str,
     'ab_slot': bool,
