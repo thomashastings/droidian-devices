@@ -39,7 +39,7 @@
     - Install the file called `jasmine_sprout_stock_android9.zip` as a Zip file
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload jasmine_sprout_stock_android9.zip`
 - Install the required vendor version
-    - Install the file called `fw-vendor_image_wayne_miui_MI6X_V11.0.6.0.PDCCNXM_f049df201b_9.0.zip`
+    - Install the file called `fw-vendor_image_wayne_miui_MI6X_V11.0.6.0.PDCCNXM_f049df201b_9.0.zip` as a Zip file
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload fw-vendor_image_wayne_miui_MI6X_V11.0.6.0.PDCCNXM_f049df201b_9.0.zip`
 - Install recovery
     - Install the file called `twrp-VERSION-wayne.img` as an Image to the `Recovery` partition
@@ -233,7 +233,7 @@ You can ask for assistance specific to this device at [Droidian for Poco F1 Tele
     - Install the file called `fw_violet_miui_VIOLET_9.9.3_79d3ccd33b_9.0.zip` as a Zip file
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload fw_violet_miui_VIOLET_9.9.3_79d3ccd33b_9.0.zip`
 - Install the required vendor version
-    - Install the file called `vendor.zip`
+    - Install the file called `vendor.zip` as a Zip file
     - Alternatively, you can enter `ADB sideload` mode and run `adb sideload vendor.zip`
 - Install the boot image
     - Install the file called `boot.img` as an Image to the `Boot` partition
@@ -373,5 +373,4 @@ You can find a list of mobile-friendly Linux applications at [LinuxPhoneApps](ht
 [UBports](https://ubuntu-touch.io/)
 
 You can ask for assistance specific to this device at [Shouko's Lab Telegram Group](https://t.me/shoukolab).
-
 
