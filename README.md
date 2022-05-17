@@ -4,13 +4,13 @@
 - This is tool generates guides (GitHub markdown format) for devices supported by Droidian, based on a YAML configuration file.
 - The latest version of the devices file is the [`devices.yml`](https://github.com/thomashastings/droidian-devices/blob/main/devices.yml).
 - An empty device template is also provided as [`device_template.yml`](https://github.com/thomashastings/droidian-devices/blob/main/device_template.yml).
-- The script depends on the `yaml` Python package, you need to install it before using running the script.
+- The script depends on the `yaml` and `schema` Python packages, you need to install them before using running the script.
 
 ## Device parameters explained
 These are the parameters used in `devices.yml`. Start each device entry with a `-`.
 - `manufacturer`: manufacturer of the device
 - `name`: name of the device 
-- `codenamename`: codename of the device
+- `codename`: codename of the device
 - `support`: `official` or `community`
 - `device_type`: phone, tablet, etc
 - `halium_version`: 9, 10, or 11
