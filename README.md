@@ -11,6 +11,9 @@ These are the parameters used in `devices.yml`. Start each device entry with a `
 - `manufacturer`: manufacturer of the device
 - `name`: name of the device 
 - `codenamename`: codename of the device
+- `support`: `official` or `community`
+- `device_type`: phone, tablet, etc
+- `halium_version`: 9, 10, or 11
 - `fastboot_mode`: button combination for booting in fastboot mode
 - `recovery_mode`: button combination for booting in recovery mode
 - `ab_slot`: `True` if the device has A/B slots, leave empty if not
@@ -29,6 +32,7 @@ These are the parameters used in `devices.yml`. Start each device entry with a `
 - `credit`: also a list, each entry should start with a `-`. `name`: the name of the maintainer, `link`: maintainer's page
 - `command`: a list of commands that need to be run after first boot, start each line of the commands with a `-`
 - `notes`: additional considerations for the device, start each note with a `-`. A note contains a `title` entry and a `text` that contains the note itself
+- `port_status`: please, see the `device_template.yml` file for details
 
 \* `android`, `vendor_zip`, `vendor_image`, and `boot` have multiple parts. The `link` contains the actual link to the file or release page; the `text` contains the string what the download link should say in the page; and the `filename` specifies the name of the file that identifies the file when flashing.
 
