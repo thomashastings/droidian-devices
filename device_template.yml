@@ -3,7 +3,7 @@
   codename:
   support: community
   device_type: phone
-  halium_version: "9.0"
+  halium_version: 9
   fastboot_mode: '`Vol-` and `Power`'
   recovery_mode: '`Vol+` and `Power`'
   ab_slot:
@@ -202,28 +202,3 @@
       - id: "wired_external_monitor"
         value: "?"
         comments: ""
-deviceInfo:
-  - id: "cpu"
-    value: "Octa-core 64-bit"
-  - id: "chipset"
-    value:""
-  - id: "cpu_manufacturer"
-    value : "qualcom"
-  - id: "arch"
-    value: "arm64"
-  - id: "gpu"
-    value: "Qualcomm Adreno 612"
-  - id: "rom"
-    value: "64/128GB"
-  - id: "ram"
-    value: "4/6GB"
-  - id: "android"
-    value: "Android 9.0"
-  - id: "battery"
-    value: "4000 mAh"
-  - id: "display"
-    value: "2340x1080 pixels, 6.3 in"
-  - id: "rearCamera"
-    value: "48MP"
-  - id: "frontCamera"
-    value: "13MP"
