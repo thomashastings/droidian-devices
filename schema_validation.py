@@ -77,7 +77,7 @@ device_schema = Schema({
        'category_name': str,
        'features': [{
            'id': str,
-           'value': str
+           'value': Or("+", "-", "~", "?", "x")
            }]
        }
     ]
