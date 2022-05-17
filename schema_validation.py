@@ -6,10 +6,9 @@ device_schema = Schema({
     'manufacturer': str,
     'name': str,
     'codename': str,
-    // TODO : support has to be changed from str to have values as community or official
-    'support': str,
+    'support': Or("community", "official"),
     'device_type': str,
-    'halium_version': str,
+    'halium_version': int,
     'fastboot_mode': str,
     'recovery_mode': str,
     'ab_slot': bool,
@@ -72,7 +71,16 @@ device_schema = Schema({
         'title': Or(None, str),
         'text': Or(None, str),
         }
-    ], None)
+    ], None),
+    'port_status': [
+       {
+       'category_name': str,
+       'features': [{
+           'id': str,
+           'value': str
+           }]
+       }
+    ]
     })
 
 def validate_file(file): 
