@@ -3,6 +3,20 @@ import os
 from schema import Or, Schema, SchemaError
 from schema_validation import validate_file
 
+# Define functions for repeated steps
+def recovery_zip(filename):
+    return (f"    - Install the file called `{filename}` as a Zip file")
+
+def recovery_image(partition, filename):
+    return (f"    - Install the file called `{filename}` as an Image to the `{partition}` partition")
+
+def sideload_zip(filename):
+    return (f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {filename}`")
+
+def fastboot_image(partition, filename):
+    partition = partition.lower()
+    return (f"    - Alternatively, you can enter fastboot mode and `fastboot flash {partition} {filename}`")
+
 # Check for valid files
 devices = []
 for file in os.listdir("devices"):
@@ -76,38 +90,38 @@ for device in devices:
         outlines.append("")
         outlines.append("- **With `Slot B` as active:**")
         if device['android']['filename'] is not None:
-            outlines.append(f"    - Install the file called `{device['android']['filename']}` as a Zip file")
-            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['android']['filename']}`")
+            outlines.append(recovery_zip(device['android']['filename']))
+            outlines.append(sideload_zip(device['android']['filename']))
         if device['vendor_zip']['filename'] is not None:
-            outlines.append(f"    - Install the file called `{device['vendor_zip']['filename']}`")
-            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['vendor_zip']['filename']}`")
+            outlines.append(recovery_zip(device['vendor_zip']['filename']))
+            outlines.append(sideload_zip(device['vendor_zip']['filename']))
         outlines.append(f"-    Now switch back to `Slot A` and boot {device['recovery']['name']} again (must boot again, switching is not enough)")
         outlines.append("")
         outlines.append("- **With `Slot A` as active:**")
         if device['android']['filename'] is not None:
-            outlines.append(f"    - Install the file called `{device['android']['filename']}` as a Zip file")
-            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['android']['filename']}`")
+            outlines.append(recovery_zip(device['android']['filename']))
+            outlines.append(sideload_zip(device['android']['filename']))
         if device['vendor_zip']['filename'] is not None:
-            outlines.append(f"    - Install the file called `{device['vendor_zip']['filename']}`")
-            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['vendor_zip']['filename']}`")
+            outlines.append(recovery_zip(device['vendor_zip']['filename']))
+            outlines.append(sideload_zip(device['vendor_zip']['filename']))
         outlines.append("    - For the rest of the guide, keep using `Slot A`")
     else:     
         if device['android']['filename'] is not None:
             outlines.append("- Install the required base Android version (9, 10, 11)")
-            outlines.append(f"    - Install the file called `{device['android']['filename']}` as a Zip file")
-            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['android']['filename']}`")
+            outlines.append(recovery_zip(device['android']['filename']))
+            outlines.append(sideload_zip(device['android']['filename']))
         if device['vendor_zip']['filename'] is not None:
             outlines.append("- Install the required vendor version")
-            outlines.append(f"    - Install the file called `{device['vendor_zip']['filename']}`")
-            outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['vendor_zip']['filename']}`")
+            outlines.append(recovery_zip(device['vendor_zip']['filename']))
+            outlines.append(sideload_zip(device['vendor_zip']['filename']))
     if device['vendor_image']['filename'] is not None:
         outlines.append("- Install the vendor image")
-        outlines.append(f"    - Install the file called `{device['vendor_image']['filename']}` as an Image to the `Vendor` partition")
-        outlines.append(f"    - Alternatively, you can enter fastboot mode and `fastboot flash vendor {device['vendor_image']['filename']}`")
+        outlines.append(recovery_image("Vendor", device['vendor_image']['filename']))
+        outlines.append(fastboot_image("Vendor", device['vendor_image']['filename']))
     if device['boot']['filename'] is not None:
         outlines.append("- Install the boot image")
-        outlines.append(f"    - Install the file called `{device['boot']['filename']}` as an Image to the `Boot` partition")
-        outlines.append(f"    - Alternatively, you can enter fastboot mode and `fastboot flash boot {device['boot']['filename']}`")
+        outlines.append(recovery_image("Boot", device['boot']['filename']))
+        outlines.append(fastboot_image("Boot", device['boot']['filename']))
     if device['recovery']['filename'] is not None and device['recovery']['must_flash'] is not True:
         outlines.append("- Install recovery")
         if device['recovery']['name'] == "TWRP":
@@ -115,19 +129,19 @@ for device in devices:
         elif device['recovery']['must_flash'] is not True:
             outlines.append(f"    - Please, follow the official guide to install {device['recovery']['name']}")
     outlines.append("- Install Droidian `rootfs`")
-    outlines.append(f"    - Install the file named `droidian-rootfs-{device['arch']}_YYYYMMDD.zip` as a Zip file")
-    outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload droidian-rootfs-{device['arch']}_YYYYMMDD.zip`")
+    outlines.append(recovery_zip(f"droidian-rootfs-{device['arch']}_YYYYMMDD.zip"))
+    outlines.append(sideload_zip(f"droidian-rootfs-{device['arch']}_YYYYMMDD.zip"))
     outlines.append("- Install `devtools` (for stable release)")
-    outlines.append(f"    - Install the file named `droidian-devtools-{device['arch']}_YYYYMMDD.zip` as a Zip file")
-    outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload droidian-devtools-{device['arch']}_YYYYMMDD.zip`")
+    outlines.append(recovery_zip(f"droidian-devtools-{device['arch']}_YYYYMMDD.zip"))
+    outlines.append(sideload_zip(f"droidian-devtools-{device['arch']}_YYYYMMDD.zip"))
     outlines.append("    - This component is already included in nightly builds")
     outlines.append("    - Installation is optional for stable releases, but it is recommended, because it helps with debugging")
     outlines.append("")
     outlines.append("## 3. Finalizing the installation")
     if device['adaptation']['filename'] is not None:
         outlines.append(f"- Install adaptation package as a flashable zip ({device['recovery']['name']})")
-        outlines.append(f"    - Install the file named `{device['adaptation']['filename']}` as a Zip file")
-        outlines.append(f"    - Alternatively, you can enter `ADB sideload` mode and run `adb sideload {device['adaptation']['filename']}`")
+        outlines.append(recovery_zip(device['adaptation']['filename']))
+        outlines.append(sideload_zip(device['adaptation']['filename']))
     outlines.append("- Boot your device")
     outlines.append("    - Go to the `Reboot` menu and choose `System`")
     outlines.append(f"    - {device['recovery']['name']} might complain that there is no OS installed, but that's fine")
@@ -153,7 +167,7 @@ for device in devices:
         outlines.append("### Porting status")
         outlines.append(f"You can check out the status of the port [here]({device['statuspage']})")
         outlines.append("")
-    outlines.append("### SSH")
+    outlines.append("### SSH access")
     outlines.append("Flashing the `devtools` zip enables `SSH` over USB. To use it, connect your phone to your computer and type `ssh droidian@10.15.19.82`, the password is `1234` (on Windows, you may need [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/))")
     outlines.append("")
     outlines.append("### Applications")
